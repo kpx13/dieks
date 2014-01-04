@@ -1,14 +1,13 @@
-import os
-from os.path import dirname
-import sys
+import os, sys, site
 
-ROOT = dirname(dirname(os.path.abspath(__file__)))
-PROJECT_ROOT = ROOT + '/dieks/'
-sys.path.append(PROJECT_ROOT)
+root = os.path.abspath(__file__)
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "settings")
-activate_this = PROJECT_ROOT + "/env/bin/activate_this.py"
-execfile(activate_this, dict(__file__=activate_this))
+site_packages_root = os.path.join(root, '../lib/python2.6/site-packages')
 
-from django.core.wsgi import get_wsgi_application
-application = get_wsgi_application()
+site.addsitedir(site_packages_root)
+sys.path = [os.path.dirname(root), root, site_packages_root] + sys.path
+os.environ['DJANGO_SETTINGS_MODULE'] = 'dieks.settings'
+
+import django.core.handlers.wsgi
+application = django.core.handlers.wsgi.WSGIHandler()
+
