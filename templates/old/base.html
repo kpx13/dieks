@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="/static/style.css" type="text/css" rel="stylesheet" />
+<meta name='yandex-verification' content='773529befb6a59ea' />
+    <title>{{title}}</title>
+
+    <link rel="stylesheet" type="text/css" href="/static/jquery-ui-1.8.20.custom.css" />
+    <script type="text/javascript" src="/static/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="/static/jquery-ui-1.8.20.custom.min.js"></script>
+    {% if is_home %}
+	<style>
+	.promo a{color: #c0c0c0}
+	.promo{color: #c0c0c0}
+
+	</style>
+    {% endif %}
+    {% if contacts %}
+        <script type="text/javascript">
+        $(function(){
+            {% for c in contacts %}
+                $('#send_mail_{{c.id}}_dialog').dialog({
+                                autoOpen: false,
+                                width: 400,
+                                buttons: {
+                                        "Отправить": function() {  $('#send_mail_{{c.id}}_form').submit(); $(this).dialog("close");},
+                                        "Отмена": function() { $(this).dialog("close"); }
+                                }
+                        });
+                
+                $('#send_mail_{{c.id}}_link').click(function(){
+                        $('#send_mail_{{c.id}}_dialog').dialog('open');
+                });
+
+                {% if contact_id %}
+                    {% if contact_id == c.id %}
+                        $('#send_mail_{{c.id}}_dialog').dialog('open');
+                    {% endif %}
+                {% endif %}
+                
+            {% endfor %}
+        })
+        </script>
+    {% endif %}
+
+</head>
+<body>
+    <div class='page-container'>
+        <div class='header'>
+            <a href='/'><div class='header-top'></div></a>
+        </div>
+        <div class='clear'></div>
+                <div class="menu">
+                <ul>
+                    <li {%if 'news' in request_url %} class='selected' {% endif %}><a href='/'>Новости</a></li>
+                    <li {%if 'about' in request_url %} class='selected' {% endif %}><a href='/page/about'>О компании</a></li>
+                    <li {%if 'licenses' in request_url %} class='selected' {% endif %}><a href='/licenses'>Лицензии</a></li>
+                    <li {%if 'evidences' in request_url %} class='selected' {% endif %}><a href='/evidences'>Свидетельства</a></li>
+                    <li {%if 'services' in request_url %} class='selected' {% endif %}><a href='/page/services'>Услуги</a></li>
+                    <li {%if 'proposals' in request_url %} class='selected' {% endif %}><a href='/page/proposals'>Формы заявок</a></li>
+                    <li {%if 'contacts' in request_url %} class='selected' {% endif %}><a href='/contacts'>Контакты</a></li>
+                    <li {%if 'quality' in request_url %} class='selected' {% endif %}><a href='/page/quality'>Политика в области качества</a></li>
+                </ul>
+                </div>
+        <div class='clear'></div>
+        <div class='middle-content'>
+            <div class='contacts'>
+                <strong>Тел./факс:</strong> <br />(495)452-29-76,<br />(495)452-53-03,&nbsp;<br />(495)730-75-90
+                <br /><br />
+                <strong>Адрес офиса:</strong><br />125212, г.Москва,&nbsp;Головинское шоссе, д. 8. корп. 2А (2 этаж)&nbsp;<br />
+                (м. Водный стадион, выход из последнего вагона от центра, примерно 250м от метро)
+                <br /><br />
+                <strong>Почтовый адрес:</strong><br />125212, г.Москва, а/я 111
+                <br /><br />
+                <strong>Эл.почта</strong>: info@dieks.ru,&nbsp;anodiexne@mail.ru</span>
+                <br /><br />
+                <a href='/contacts'>Подробнее...</a>
+            </div>
+
+            <div class="content-container">
+                <h1>{{page_header}}</h1>
+                <div class='content'>
+                {% block content %}
+                {% endblock %}
+                </div>
+            </div>
+            <div class='clear'></div>
+        </div>
+        <div class='footer'>
+            <div style = 'float: right; margin-right: 30px'>
+
+                <a href='/'>Новости</a> /
+                <a href='/page/about'>О компании</a> /
+                <a href='/licenses'>Лицензии</a> /
+                <a href='/evidences'>Свидетельства</a> /
+                <a href='/page/services'>Услуги</a> /
+                <a href='/page/proposals'>Формы заявок</a> /
+                <a href='/contacts'>Контакты</a> /
+                <a href='/page/quality'>Политика в области качества</a>
+
+                <br /><br />
+   {% if is_home %}<p class='promo'>Подготовкой специалистов к <a href='http://u-hold.ru/uslugi/obushenie-i-attestacia/attestacia-rostehnadzora' target='blank'>аттестации ростехнадзора</a> занимается наш партнер - u-hold.ru</p>{% endif %}
+<br />
+<a href='http://webgenesis.ru/' target='blank'>Создание сайта www.webgenesis.ru</a>
+                <div style = 'float: right'>АНО "ДИЭКС" 2012 &copy;</div>
+            </div>
+        </div>
+        <div class='clear'></div>
+    </div>
+</body>
+</html>

@@ -7,7 +7,7 @@ from django.http import HttpResponseRedirect, HttpResponseNotFound
 from django.shortcuts import render_to_response
 import datetime
 
-import pages.views
+from pages.models import Page
 import contacts.views
 import news.views
 import certificates.views
@@ -72,7 +72,7 @@ def contacts_page(request, contact_id=0):
 
 def get_page(request, page_name):
     c = get_common_context(request)
-    page = pages.views.get_page(page_name)
+    page = Page.get_by_slug(page_name)
     if page:
         c.update(page)
         c['page_header'] = c['title']
@@ -80,10 +80,3 @@ def get_page(request, page_name):
         return render_to_response('page.html', c)
     else:
         return HttpResponseNotFound('not found page')
-
-def insert_test_data(request):
-    pages.views.insert_test_data()
-    contacts.views.insert_test_data()
-    news.views.insert_test_data()
-    certificates.views.insert_test_data()
-    return HttpResponseRedirect('/')

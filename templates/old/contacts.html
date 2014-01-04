@@ -21,18 +21,17 @@
     <p>
 
 
-<div id="ymaps-map-id_133701845519668453742" style="width: 500px; height: 350px; margin: 10px auto"></div>
+<div id="ymaps-map-id_133701845519668453742" style="width: 600px; height: 350px; margin: 10px auto"></div>
 <script type="text/javascript" src="http://api-maps.yandex.ru/2.0/?coordorder=longlat&load=package.full&wizard=constructor&lang=ru-RU&onload=fid_133701845519668453742"></script>
 <script type="text/javascript">function fid_133701845519668453742(ymaps) {var map = new ymaps.Map("ymaps-map-id_133701845519668453742", {center: [37.49285949999998, 55.839839260279554], zoom: 15, type: "yandex#map"});map.controls.add("zoomControl").add("mapTools").add(new ymaps.control.TypeSelector(["yandex#map", "yandex#satellite", "yandex#hybrid", "yandex#publicMap"]));map.geoObjects.add(new ymaps.Placemark([37.492859, 55.838511], {balloonContent: 'АНО "Диэкс"<br/>подъезд№1, 2 этаж'}, {preset: "twirl#pinkDotIcon"}));};</script>
 
-    <p><strong><h3>Контактные лица:</h3></strong> </p>
+    <p><strong><h3>Контактные лица:</h3></strong> (Нажмите на имя, чтобы отправить сообщение)</p><br />
     <ul class = 'contacts-list'>
     {% for c in contacts %}
         <li>
-<!--             <a id = 'send_mail_{{c.id}}_link' style = 'cursor: pointer'><u>{{c.name}}</u></a>  -->
-            <u>{{c.name}}</u> - {{c.position}}
-            {% if c.code %}&nbsp;/&nbsp;доб.&nbsp;{{c.code}} {% endif %}
-            {% if c.email %} / email:&nbsp;<b>{{c.email}}</b> {% endif %}
+            <a id = 'send_mail_{{c.id}}_link' style = 'cursor: pointer'><u>{{c.name}}</u></a> - {{c.position}}
+            {% if c.code %} / доб. {{c.code}} {% endif %}
+            {% if c.email %} / e-mail: <b>{{c.email}}</b> {% endif %}
         </li>
         <div style='display: none'>
             <div id="send_mail_{{c.id}}_dialog" title="Отправить сообщение">
