@@ -1,7 +1,8 @@
 uwsgi:
     socket: /var/tmp/dieks_uwsgi.sock
+    virtualenv: /var/www/ann/data/dieks/env/
     pythonpath: /var/www/ann/data/dieks
-    env: DJANGO_SETTINGS_MODULE=settings
+    env: DJANGO_SETTINGS_MODULE=dieks.settings
     module: wsgi
     daemonize: /var/www/ann/data/dieks/logs/uwsgi.log
     max-requests: 5000
