@@ -487,7 +487,7 @@ h2 {
     background: #68aedc;
 }
 
-.popup-wrp {
+.popup-wrp, .popup-wrp-r {
     position: fixed;
     width: 100%;
     height: 100%;
@@ -526,8 +526,8 @@ h2 {
 .popup__btn {
     font-size: 30px;
     display: block;
-    width: 224px;
-    height: 46px;
+    width: 228px;
+    height: 50px;
     line-height: 46px;
     background: url(../img/popup-btn.png) no-repeat 0 0;
     text-align: center;
@@ -535,6 +535,8 @@ h2 {
     color: #fff;
     margin: 0 auto;
     margin-top: 25px;
+    border: none;
+    cursor: pointer;
 }
 
 .popup label {
@@ -544,7 +546,7 @@ h2 {
     margin-bottom: 5px;
 }
 
-.popup input[type="text"] {
+.popup input[type="text"],  .popup textarea{
     height: 48px;
     border-radius: 5px;
     outline: none;
@@ -554,8 +556,10 @@ h2 {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-
+    border: 1px solid #ccc;
 }
+
+.popup textarea { height: 100px;}
 
 #user-name {
     background: #fff url(../img/user.png) no-repeat 9px center;
@@ -565,7 +569,7 @@ h2 {
     background: #fff url(../img/iphone.png) no-repeat 9px center;
 }
 
-.popup-close {
+.popup-close, .popup-close-r {
     font-size: 30px;
     color: #db160d;
     width: 48px;
@@ -701,12 +705,18 @@ a.block__btn{
 .loupe:hover{
     background-color: #d9271b;
 }
-.content.inner2{
+.certificates{
     text-align: center ;
     position: relative;
     line-height: 0;
     font-size: 0;
 }
+
+.certificates p{
+    line-height: 16px;
+    font-size: 14px;
+}
+
 a.page-nav__i{
     width: 27px;
     height: 27px;

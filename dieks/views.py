@@ -6,22 +6,60 @@ from django.core.context_processors import csrf
 from django.http import HttpResponseRedirect, HttpResponseNotFound
 from django.shortcuts import render_to_response
 import datetime
+from django.core.mail import send_mail
 
 from pages.models import Page
+from slideshow.models import Slider
+from feedback.forms import FeedbackForm
+from request.forms import RequestForm
+from review.models import Review
 import contacts.views
 import news.views
 import certificates.views
 import forms
 
+import config
+from livesettings import config_value
+from django.conf import settings
+
+
 def send_mail_to_emploee(data, mail_to):
-    from django.core.mail import send_mail
     text= u'Имя: ' + data['name'] + u"\n" + u'email: ' + data['email'] + '\n' + u'Телефон: ' + data['phone'] + '\n' + u'Письмо: ' + data['text'] + '\n'
     send_mail('Вам новое сообщение с сайта dieks.ru', text , 'noreply@dieks.ru', [mail_to], fail_silently=False)
     
 def get_common_context(request):
     c = {}
+    
+    callform = FeedbackForm()
+    requestform = RequestForm()
+    if request.method == 'POST':
+        if request.POST['action'] == 'call':
+            callform = FeedbackForm(request.POST)
+            if callform.is_valid():
+                callform.save()
+                c['msg'] = u'Спасибо! Ваша заявка успешно отправлена.'
+                callform = FeedbackForm()
+            else:
+                c['msg'] = u'Необходимо ввести имя и телефон.'
+            c['show_callform'] = True
+        elif request.POST['action'] == 'request':
+            requestform = RequestForm(request.POST)
+            if requestform.is_valid():
+                requestform.save()
+                c['msg'] = u'Спасибо! Ваша заявка успешно отправлена.'
+                requestform = RequestForm()
+            else:
+                c['msg'] = u'Необходимо ввести имя и телефон.'
+            c['show_requestform'] = True
+
+    c['request_url'] = request.path
+    c['is_debug'] = settings.DEBUG
+    c['callform'] = callform
+    c['requestform'] = requestform
     c['request_url'] = request.path
     c['title'] = u'АНО Диэкс: промышленная безопасность, экспертиза, неразрушающий контроль'
+    c['slideshow'] = Slider.objects.all()
+    c['reviews'] = Review.objects.all()[:3]
     c.update(csrf(request))
     return c
 
@@ -40,14 +78,12 @@ def news_page(request):
 def licenses_page(request):
     c = get_common_context(request)
     c['certificates'] = certificates.views.get_licenses()
-    print c['certificates']
     c['page_header'] = u'Лицензии'
     return render_to_response('certificates.html', c)
 
 def evidences_page(request):
     c = get_common_context(request)
     c['certificates'] = certificates.views.get_evidences()
-    print c['certificates']
     c['page_header'] = u'Свидетельства'
     return render_to_response('certificates.html', c)
 

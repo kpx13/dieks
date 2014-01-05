@@ -112,7 +112,11 @@ INSTALLED_APPS = (
     'pages',
     'news',
     'contacts',
-    'certificates'
+    'certificates',
+    'slideshow',
+    'feedback',
+    'request',
+    'review',
 )
 
 

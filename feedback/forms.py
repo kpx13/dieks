@@ -16,11 +16,11 @@ def sendmail(subject, body):
 class FeedbackForm(ModelForm):
     class Meta:
         model = Feedback
-        exclude = ('date', )
+        exclude = ('request_date', )
       
     def save(self, *args, **kwargs):
         super(FeedbackForm, self).save(*args, **kwargs)
-        subject=u'Пупсик, поступило сообщение через обратную связь'
+        subject=u'Поступила заявка на обратный звонок'
         
         body_templ="""
 {% for field in form %}

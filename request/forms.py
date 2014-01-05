@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
  
 from django.forms import ModelForm
-from models import Order
+from models import Request
 from django.conf import settings
 from livesettings import config_value
 from django.core.mail import send_mail
@@ -13,17 +13,14 @@ def sendmail(subject, body):
     send_mail(mail_subject, body, settings.DEFAULT_FROM_EMAIL,
         [config_value('MyApp', 'EMAIL')])
 
-class OrderForm(ModelForm):
+class RequestForm(ModelForm):
     class Meta:
-        model = Order
-        exclude = ('date', )
+        model = Request
+        exclude = ('request_date', )
       
     def save(self, *args, **kwargs):
-        super(OrderForm, self).save(*args, **kwargs)
-        if 'card' in self.data:
-            subject=u'Новая запись на тренировку'
-        else:
-            subject=u'Поступила новая заявка на пробную тренировку'
+        super(RequestForm, self).save(*args, **kwargs)
+        subject=u'Поступила заявка'
         
         body_templ="""
 {% for field in form %}

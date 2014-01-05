@@ -3,9 +3,10 @@
 from django.db import models
 
 
-class Feedback(models.Model):
-    name  = models.CharField(u'Имя', max_length=255)
+class Request(models.Model):
+    name  = models.CharField(u'ФИО', max_length=255)
     phone  = models.CharField(u'Телефон', max_length=255)
+    text = models.TextField(u'Текст заявки', blank=True)
     request_date = models.DateTimeField(u'дата добавления', auto_now_add=True)
     
     class Meta:

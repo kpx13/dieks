@@ -37,53 +37,77 @@
 
 </head>
 <body>
+
 <div class="popup-wrp">
     <div class="popup">
-        <form action="">
+        <form method='POST'>
             <div class="popup__title">Заказать обратный звонок</div>
+            <p style='color: red; font-size: 1.2em'>{{ msg }}</p>
             <label for="user-name">Ваше имя:</label>
-            <input type="text" name="user-name" id="user-name"/>
+            <input type="text" id="user-name"  name="name" value='{% if callform.name.value %}{{ callform.name.value }}{% endif %}' {% if callform.errors.name %} style='border: 1px solid red' {% endif %} />
             <label for="user-phone">Ваш телефон:</label>
-            <input type="text" name="user-phone" id="user-phone"/>
-            <a href="#" class="popup__btn">Отправить</a>
+            <input type="text" id="user-phone" name="phone" value='{% if callform.phone.value %}{{ callform.phone.value }}{% endif %}' {% if callform.errors.name %} style='border: 1px solid red' {% endif %} />
+            <input type='submit' class="popup__btn" value='Отправить'/>
+            <input type='hidden' name='action' value='call'>
+            {% csrf_token %}
         </form>
         <div class="popup-close">X</div>
     </div>
 </div>
+
+{% if show_callform %}
+    <script>
+        $(".popup-wrp").fadeIn(500);
+    </script>
+{% endif %}
+
+
+<div class="popup-wrp-r">
+    <div class="popup">
+        <form method='POST'>
+            <div class="popup__title">Онлайн заявка</div>
+            <p style='color: red; font-size: 1.2em'>{{ msg }}</p>
+            <label for="user-name">Ваше имя:</label>
+            <input type="text" id="user-name"  name="name" value='{% if requestform.name.value %}{{ requestform.name.value }}{% endif %}' {% if requestform.errors.name %} style='border: 1px solid red' {% endif %} />
+            <label for="user-phone">Ваш телефон:</label>
+            <input type="text" id="user-phone" name="phone" value='{% if requestform.phone.value %}{{ requestform.phone.value }}{% endif %}' {% if requestform.errors.name %} style='border: 1px solid red' {% endif %} />
+            <label for="user-text">Текст заявки:</label>
+            <textarea id="user-text" name="text">{% if requestform.text.value %}{{ requestform.text.value }}{% endif %}</textarea>
+            <input type='submit' class="popup__btn" value='Отправить'/>
+            <input type='hidden' name='action' value='request'>
+            {% csrf_token %}
+        </form>
+        <div class="popup-close-r">X</div>
+    </div>
+</div>
+
+{% if show_requestform %}
+    <script>
+        $(".popup-wrp-r").fadeIn(500);
+    </script>
+{% endif %}
+
 <div class="wrapper">
     <header class="header">
-        <div class="header__logo"></div>
+        <a href='/'><div class="header__logo"></div></a>
         <div class="header__slider__wrp">
             <div class="header__slider">
-                <img src="/static/img/img1.jpg" alt=""/>
-                <img src="/static/img/img1.jpg" alt=""/>
-                <img src="/static/img/img1.jpg" alt=""/>
-                <img src="/static/img/img1.jpg" alt=""/>
+                {% for s in slideshow %}
+                    <img src="/media/{{ s.image }}" alt=""/>
+                {% endfor %}
             </div>
             <div class="header__slider__text__wrp">
-                <div class="header__slider__text">
-                    Экспертиза промышленной безопасности проектной 1 <br/>
-                    документации на строительство
-                </div>
-                <div class="header__slider__text">
-                    Экспертиза промышленной безопасности проектной 2 <br/>
-                    документации на строительство
-                </div>
-                <div class="header__slider__text">
-                    Экспертиза промышленной безопасности проектной 3 <br/>
-                    документации на строительство
-                </div>
-                <div class="header__slider__text">
-                    Экспертиза промышленной безопасности проектной 4 <br/>
-                    документации на строительство
-                </div>
+                {% for s in slideshow %}
+                    <div class="header__slider__text">
+                        {{ s.content|safe }}
+                    </div>
+                {% endfor %}
+                
             </div>
             <div class="header__slider__nav">
-                <span class="header__slider__nav__i">  </span>
-                <span class="header__slider__nav__i">  </span>
-                <span class="header__slider__nav__i">  </span>
-                <span class="header__slider__nav__i">  </span>
-
+                {% for s in slideshow %}
+                    <span class="header__slider__nav__i">  </span>
+                {% endfor %}
             </div>
         </div>
         <div class="header__info">
@@ -138,28 +162,13 @@
         </div>
         <div class="sidebar sidebar_right">
             <div class="sidebar_right__title"> ОТЗЫВЫ КЛИЕНТОВ</div>
-            <div class="review-block">
-                <div class="review-logo"><img src="/static/img/gazprom.jpg" alt="Газпром"/></div>
-                <p class="review-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                </p>
-            </div>
-            <div class="review-block">
-                <div class="review-logo"><img src="/static/img/baupark.jpg" alt="Baupark"/></div>
-                <p class="review-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                </p>
-            </div>
-            <div class="review-block">
-                <div class="review-logo"><img src="/static/img/invest.jpg" alt="Содружество-инвест"/></div>
-                <p class="review-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                </p>
-            </div>
-            <a href="" class="review-btn">Все отзывы</a>
+            {% for r in reviews %}
+                <div class="review-block">
+                    <div class="review-logo"><img src="/media/{{ r.logo }}" alt="{{ r.name }}"/></div>
+                    <p class="review-text">{{ r.text }}</p>
+                </div>
+            {% endfor %}
+            <a href="#" class="review-btn">Все отзывы</a>
         </div>
     </div>
     <footer class="footer">

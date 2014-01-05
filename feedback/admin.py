@@ -4,6 +4,6 @@ from models import Feedback
 
 
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ('request_date', 'name', 'phone', 'email', 'message')
+    list_display = ('request_date', 'name', 'phone', )
 
 admin.site.register(Feedback, OrderAdmin)
