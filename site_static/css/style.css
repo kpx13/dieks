@@ -699,8 +699,8 @@ a.block__btn{
     border: 2px solid #fff;
     cursor: pointer;
     position: absolute;
-    right: -8px;
-    bottom: 30px;
+    right: 0px;
+    bottom: 0px;
 }
 .loupe:hover{
     background-color: #d9271b;

@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="/static/css/style.css"/>
     <script type="text/javascript" src="/static/jquery-1.9.1.min.js"></script>
     <script type="text/javascript" src="/static/script.js"></script>
+    <link rel="stylesheet" href="/static/css/colorbox.css"/>
+    <script type="text/javascript" src="/static/js/jquery.colorbox-min.js"></script>
 
     {% if contacts %}
         <script type="text/javascript">
@@ -34,6 +36,34 @@
         })
         </script>
     {% endif %}
+    
+        <script type="text/javascript">
+            $(function(){
+                $(window).scroll(function(){
+                    var wh = $(window).height();
+                    var st = $(window).scrollTop();
+                    var bh = $('body').height();
+                    var fh = $('#services-side').height();
+                    
+                    if ( st > 278 ){ // если середина
+                        $('#services-side').css({'position': 'fixed', 'top': '20px' });
+                        
+                    } else {
+                        $('#services-side').css({
+                            'top': '278px',
+                            'bottom': 'auto',
+                            'position': 'absolute'
+                        });
+                    }
+                });    
+            })
+            
+             $(document).ready(function () {
+                $(".gallery").each(function (index, v) {
+                    $(this).find('.gallery__item').colorbox({rel: 'gallery' + index });
+                });
+            });
+        </script>
 
 </head>
 <body>
@@ -136,12 +166,12 @@
         <a href="/map/">Карта сайта</a>
     </nav>
     <div class="container">
-        <div class="sidebar sidebar_left">
+        <div class="sidebar sidebar_left" >
             <div class="search">
-<!--                 <input type="search" placeholder="Поиск по сайту"/> -->
+                <input type="search" placeholder="Поиск по сайту"/>
                 <br />
             </div>
-            <nav class="sidebar__nav">
+            <nav class="sidebar__nav" id='services-side'>
                 <ul>
                     <li><a href="/ekspertiza-promyishlennoj-bezopasnosti/">Экспертиза промышленной<br/> безопасности</a></li>
                     <li><a href="/sertifikatsiya-tehnicheskih-ustrojstv/">Сертификация технических<br/> устройств</a></li>
@@ -186,12 +216,11 @@
             <p> Моб. тел.:<span class="footer__address__phone"> +7 (903) 710-41-50</span></p>
 <!--             <a href='http://webgenesis.ru/' target='blank'>Создание сайта www.webgenesis.ru</a> -->
         </div>
-        <a href="#" class="footer__map"><img src="/static/img/Maps.png" alt=""/>
+        <a href="/contacts/" class="footer__map"><img src="/static/img/Maps.png" alt=""/>
             На карте
         </a>
         
-        <div class="footer__counter"><img src="/static/img/footer_icon.jpg"/>
-        </div>
+<!--         <div class="footer__counter"><img src="/static/img/footer_icon.jpg"/></div> -->
     </footer>
 </div>
 </body>

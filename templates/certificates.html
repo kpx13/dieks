@@ -8,12 +8,17 @@
     {% for c in certificates %}
         <div class="block">
             <div class="block__i">
-                <div class="block__inner">
-                    {% thumbnail c.image "x190" as im %}
-                        <img src="{{ im.url }}" />
+                <div class="block__inner gallery">
+                    {% thumbnail c.image "x180" as im %}
+                        <a class="gallery__item" href="/media/{{ c.image }}" title="{{ c.name }}" style='padding: 0px; margin: 0px'>
+                            <img src="{{ im.url }}" />
+                            <span class="loupe"></span>
+                        </a>
                     {% endthumbnail %}
-                    <p>{{ c.name }}</p>
+                    
+                    
                 </div>
+                <p>{{ c.name }}</p>
             </div>
             
             <a href="/media/{{c.document}}" class="block__btn" target='_blank'> Сохранить  </a>
