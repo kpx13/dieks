@@ -103,8 +103,14 @@ def contacts_page(request, contact_id=0):
     else:
         c['mail_form'] = forms.MailForm()
     
-    
     return render_to_response('contacts.html', c)
+
+def partners_page(request):
+    c = get_common_context(request)
+    c.update(Page.get_by_slug('partners'))
+    c['documents'] = Review.objects.all()
+    c['page_header'] = u'Партнеры'
+    return render_to_response('partners.html', c)
 
 def get_page(request, page_name):
     c = get_common_context(request)

@@ -7,7 +7,7 @@ class Page(models.Model):
     title = models.CharField(max_length=200, verbose_name=u'заголовок')
     content = RichTextField(blank=True, verbose_name=u'html-содержимое')
     slug = models.SlugField(max_length=200, blank=True, verbose_name=u'url страницы')
-    header_content = models.TextField(blank=True, verbose_name=u'header-содержимое')
+    header_content = models.TextField(blank=True, verbose_name=u'header-содержимое', help_text=u'Здесь можно разместить META-теги')
     
     def save(self, *args, **kwargs):
         if not self.slug:

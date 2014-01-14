@@ -1,0 +1,51 @@
+body
+{
+    background-color: white;
+}
+
+#header {
+    background: white;
+    color: #333;
+    background: #d3e1e4 url(/static/img/layout.jpg);
+    
+}
+
+#user-tools{
+/*     display: none; */
+}
+
+.dashboard-title{
+    display: none;
+}
+
+#header #branding h1 {
+    margin: 0;
+    padding: 5px 0px;
+    text-indent: -9999px;
+    background: transparent url('/static/img/logo_adm.png') 10% no-repeat;
+    height: 50px;
+    width: 300px;
+}
+
+#header a
+{
+    color: #333 !important;
+    text-decoration: underline;
+}
+
+#header #branding a
+{
+    color: black !important;
+    font-size: large !important;
+}
+
+.grp-horizontal-list
+{
+}
+
+.grp-horizontal-list ul li
+{
+    list-style: none;
+    
+    
+}

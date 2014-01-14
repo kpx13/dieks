@@ -45,14 +45,12 @@ class CustomIndexDashboard(Dashboard):
             modules.ModelList(
                 title = u'Страницы и Контент',
                 models=(
-                    'menu.models.Menu',
                     'pages.models.Page',
-                    'gallery.models.Photo',
                     'news.models.Article',
-                    'programs.models.Program',
-                    'review.models.Review',
                     'slideshow.models.Slider',
-                    'partners.models.Partner',
+                    'review.models.Review',
+                    'contacts.models.Employee',
+                    'certificates.models.Certificate',
                 ),
             )
         )
@@ -62,9 +60,8 @@ class CustomIndexDashboard(Dashboard):
             modules.ModelList(
                 title = u'Заявки и Подписки',
                 models=(
-                    'order.models.Order',
-                    'homeform.models.OrderH',
-                    'subscribe.models.Subscribe',
+                    'feedback.models.Feedback',
+                    'request.models.Request',
                 ),
             )
         )

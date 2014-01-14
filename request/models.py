@@ -11,7 +11,7 @@ class Request(models.Model):
     
     class Meta:
         verbose_name = u'заявка'
-        verbose_name_plural = u'заявки'
+        verbose_name_plural = u'online заявки'
         ordering = ['-request_date']
     
     def __unicode__(self):

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% load thumbnail %}
+
+{% block content %}
+
+{{ content|safe }}
+
+<br />
+<h1>Отзывы</h1>
+<div class='certificates'>
+    {% for c in documents %}
+        <div class="block">
+            <div class="block__i">
+                <div class="block__inner gallery">
+                    {% thumbnail c.image "x180" as im %}
+                        <a class="gallery__item" href="/media/{{ c.image }}" title="{{ c.name }}" style='padding: 0px; margin: 0px'>
+                            <img src="{{ im.url }}" />
+                            <span class="loupe"></span>
+                        </a>
+                    {% endthumbnail %}
+                </div>
+                <p>{{ c.name }}</p>
+            </div>
+            
+            <a href="/media/{{c.document}}" class="block__btn" target='_blank'> Сохранить  </a>
+        </div>
+    {% endfor %}
+</div>
+<br />
+
+
+{% endblock %}

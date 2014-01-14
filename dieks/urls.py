@@ -20,6 +20,7 @@ urlpatterns = patterns('',
     
     url(r'^$', views.news_page),
     url(r'^contacts/$', views.contacts_page),
+    url(r'^partners/$', views.partners_page),
     url(r'^licenses/$', views.licenses_page),
     url(r'^evidences/$', views.evidences_page),
     url(r'^contacts/(?P<contact_id>\w+)/$' , views.contacts_page),

@@ -1,8 +1,11 @@
+{% load thumbnail %}
+
 <!DOCTYPE html>
 <html>
 <head>
     <title>{{ title }}</title>
     <meta charset="utf-8">
+    {{ header|safe }}
     <link rel="stylesheet" href="/static/css/style.css"/>
     <script type="text/javascript" src="/static/jquery-1.9.1.min.js"></script>
     <script type="text/javascript" src="/static/script.js"></script>
@@ -194,8 +197,12 @@
             <div class="sidebar_right__title"> ОТЗЫВЫ КЛИЕНТОВ</div>
             {% for r in reviews %}
                 <div class="review-block">
-                    <div class="review-logo"><img src="/media/{{ r.logo }}" alt="{{ r.name }}"/></div>
-                    <p class="review-text">{{ r.text }}</p>
+                    <div class="review-logo">
+                        {% thumbnail r.image "180" as im %}
+                            <img src="{{ im.url }}" alt="{{ r.name }}"/>
+                        {% endthumbnail %}
+                    </div>
+                    <p class="review-text">{{ r.name }}</p>
                 </div>
             {% endfor %}
             <a href="#" class="review-btn">Все отзывы</a>
@@ -225,14 +232,3 @@
 </div>
 </body>
 </html>
-
-
-<!--
-
-                <ul>
-                    <li {%if 'news' in request_url %} class='selected' {% endif %}><a href='/'>Новости</a></li>
-                    <li {%if 'services' in request_url %} class='selected' {% endif %}><a href='/page/services'>Услуги</a></li>
-                    
-                </ul>
-               
--->
