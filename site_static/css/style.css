@@ -249,7 +249,7 @@ body {
 }
 
 .sidebar_left {
-    width: 242px;
+    width: 245px;
     background: url(../img/building.png) no-repeat -80px bottom;
     padding-top: 3px;
 
@@ -274,12 +274,18 @@ body {
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f3f3f3', endColorstr='#ffffff', GradientType=1);
 
 }
+.sidebar__nav {
+    top: 278px;
+    bottom: auto;
+    position: absolute;
+}
 
 .content {
     width: 550px;
     display: inline-block;
     vertical-align: top;
     display: table-cell;
+    padding: 10px 15px 20px 20px;
 }
 
 .sidebar__nav li {
@@ -404,10 +410,6 @@ h2 {
     line-height: 24px;
 }
 
-.content {
-    padding: 10px 15px 20px 20px;
-}
-
 .footer {
     background: url(../img/footer.jpg) repeat 0 0;
     height: 105px;
@@ -421,8 +423,8 @@ h2 {
 .footer__info {
     display: inline-block;
     vertical-align: top;
-    width: 400px;
-    margin-right: 65px;
+    width: 415px;
+    margin-right: 50px;
 }
 
 .footer__address {
@@ -537,6 +539,7 @@ h2 {
     margin-top: 25px;
     border: none;
     cursor: pointer;
+    outline: none;
 }
 
 .popup label {
@@ -736,12 +739,19 @@ a.page-nav__i:hover{
 .page-nav{
     text-align: center;
 }
-@media screen  and (max-width:1000px) {
+@media screen and (max-width:1280px) {
 
     .header__phone {
         font-size: 25px;
 
     }
+    .content{
+        padding-left:25px;
+    }
+    .sidebar__nav li a{
+        font-size: 17px;
+    }
+
 }
 
 
