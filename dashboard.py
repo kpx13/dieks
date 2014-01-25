@@ -51,6 +51,7 @@ class CustomIndexDashboard(Dashboard):
                     'review.models.Review',
                     'contacts.models.Employee',
                     'certificates.models.Certificate',
+                    'partners.models.Partner',
                 ),
             )
         )

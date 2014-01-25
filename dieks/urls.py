@@ -18,7 +18,7 @@ urlpatterns = patterns('',
     url(r'^settings/', include('livesettings.urls')),
     url(r'^ckeditor/', include('ckeditor.urls')),
     
-    url(r'^$', views.news_page),
+    url(r'^$', views.home_page),
     url(r'^contacts/$', views.contacts_page),
     url(r'^partners/$', views.partners_page),
     url(r'^licenses/$', views.licenses_page),

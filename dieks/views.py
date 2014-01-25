@@ -13,8 +13,8 @@ from slideshow.models import Slider
 from feedback.forms import FeedbackForm
 from request.forms import RequestForm
 from review.models import Review
+from partners.models import Partner
 import contacts.views
-import news.views
 import certificates.views
 import forms
 
@@ -66,14 +66,15 @@ def get_common_context(request):
 def home_page(request):
     c = get_common_context(request)
     c['request_url'] = 'home'
-    return render_to_response('home.html', c)
-
-def news_page(request):
-    c = get_common_context(request)
-    c['news'] = news.views.get_news()
-    c['page_header'] = u'Новости'
     c['is_home'] = 'true'
-    return render_to_response('news.html', c)
+    page = Page.get_by_slug('home')
+    if page:
+        c.update(page)
+        c['page_header'] = c['title']
+        c['title'] = c['title'] + u' | АНО Диэкс: промышленная безопасность, экспертиза, неразрушающий контроль'
+        return render_to_response('page.html', c)
+    else:
+        return HttpResponseNotFound('not found page')
 
 def licenses_page(request):
     c = get_common_context(request)
@@ -109,6 +110,7 @@ def partners_page(request):
     c = get_common_context(request)
     c.update(Page.get_by_slug('partners'))
     c['documents'] = Review.objects.all()
+    c['partners'] = Partner.objects.all()
     c['page_header'] = u'Партнеры'
     return render_to_response('partners.html', c)
 

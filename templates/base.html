@@ -197,9 +197,11 @@
             <div class="sidebar_right__title"> ОТЗЫВЫ КЛИЕНТОВ</div>
             {% for r in reviews %}
                 <div class="review-block">
-                    <div class="review-logo">
+                    <div class="review-logo gallery">
                         {% thumbnail r.image "180" as im %}
-                            <img src="{{ im.url }}" alt="{{ r.name }}"/>
+                            <a class="gallery__item" href="/media/{{ r.image }}" title="{{ r.name }}" style='padding: 0px; margin: 0px'>
+                                <img src="{{ im.url }}" alt="{{ r.name }}"/>
+                            </a>
                         {% endthumbnail %}
                     </div>
                     <p class="review-text">{{ r.name }}</p>

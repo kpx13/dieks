@@ -276,6 +276,7 @@ body {
 }
 .sidebar__nav {
     top: 278px;
+    width: 250px;
     bottom: auto;
     position: absolute;
 }
@@ -329,7 +330,7 @@ body {
     color: #fff;
     text-shadow: 1px 0 #427ca2;
     line-height: 18px;
-    font-size: 18px;
+    font-size: 16px;
     text-decoration: none;
     display: inline-block;
     white-space: nowrap;
@@ -633,6 +634,13 @@ h3 {
     border-bottom: 1px dashed #c6c6c6;
     background: url(../img/li.png) no-repeat 4px 16px;
 
+}
+
+.content ul.circle li {
+    list-style: disc;
+    background: none;
+    padding: 0px;
+    margin-left: 30px;
 }
 
 .content a {

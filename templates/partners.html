@@ -4,7 +4,22 @@
 
 {% block content %}
 
-{{ content|safe }}
+<div class='certificates'>
+    {% for c in partners %}
+        <div class="block">
+            <div class="block__i">
+                <div class="block__inner gallery">
+                    {% thumbnail c.logo "x100" as im %}
+                        <a class="gallery__item" href="/media/{{ c.logo }}" title="{{ c.name }}" style='padding: 0px; margin: 0px'>
+                            <img src="{{ im.url }}" />
+                        </a>
+                    {% endthumbnail %}
+                </div>
+                <p><a href='{{ c.url }}' target='_blank'>{{ c.name }}</p>
+            </div>
+        </div>
+    {% endfor %}
+</div>
 
 <br />
 <h1>Отзывы</h1>
