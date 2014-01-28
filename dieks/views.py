@@ -80,12 +80,14 @@ def licenses_page(request):
     c = get_common_context(request)
     c['certificates'] = certificates.views.get_licenses()
     c['page_header'] = u'Лицензии'
+    c['content'] = Page.get_by_slug('certificates')['content']
     return render_to_response('certificates.html', c)
 
 def evidences_page(request):
     c = get_common_context(request)
     c['certificates'] = certificates.views.get_evidences()
     c['page_header'] = u'Свидетельства'
+    c['content'] = Page.get_by_slug('certificates')['content']
     return render_to_response('certificates.html', c)
 
 def contacts_page(request, contact_id=0):
