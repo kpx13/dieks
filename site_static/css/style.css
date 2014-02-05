@@ -763,3 +763,25 @@ a.page-nav__i:hover{
 }
 
 
+
+.email_dlg {
+    width: 100%;
+    font-size: 14px;
+    overflow: hidden;
+}
+
+.email_dlg textarea, .email_dlg input{
+    width: 200px;
+    border: 1px solid #c0c0c0;
+}
+
+.ui-button {
+    margin: 0px;
+    padding: 0px;
+}
+
+.ui-button-text {
+    font-size: 14px;
+    margin: 0px;
+    padding: 0px;
+}
