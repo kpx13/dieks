@@ -36,7 +36,8 @@ def get_common_context(request):
         if request.POST['action'] == 'call':
             callform = FeedbackForm(request.POST)
             if callform.is_valid():
-                callform.save()
+		if request.POST.get('phone') != '123456':
+	            callform.save()
                 c['msg'] = u'Спасибо! Ваша заявка принята, в ближайшее время с Вами свяжутся.'
                 callform = FeedbackForm()
             else:
@@ -45,7 +46,8 @@ def get_common_context(request):
         elif request.POST['action'] == 'request':
             requestform = RequestForm(request.POST)
             if requestform.is_valid():
-                requestform.save()
+		if request.POST.get('phone') != '123456':
+                    requestform.save()
                 c['msg'] = u'Спасибо! Ваша заявка принята, в ближайшее время с Вами свяжутся.'
                 requestform = RequestForm()
             else:

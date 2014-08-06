@@ -5,6 +5,7 @@
 <head>
     <title>{{ title }}</title>
     <meta charset="utf-8">
+	<meta name='yandex-verification' content='50815290409a2f94' />
     {{ header|safe }}
     <link rel="stylesheet" href="/static/css/style.css"/>
     <link rel="stylesheet" href="/static/css/colorbox.css"/>
@@ -181,12 +182,11 @@
             <nav class="sidebar__nav" id='services-side'>
                 <ul>
                     <li><a href="/ekspertiza-promyishlennoj-bezopasnosti/">Экспертиза промышленной<br/> безопасности</a></li>
-                    <li><a href="/sertifikatsiya-tehnicheskih-ustrojstv/">Сертификация технических<br/> устройств</a></li>
-                    <li><a href="/attestatsiya-lnk/">Аттестация ЛНК</a></li>
+                    <li style='height: 60px'><a href="/attestatsiya-lnk/">Аттестация лабораторий <br /> неразрушающего контроля, <br />электролабораторий</a></li>
                     <li><a href="/attestatsiya-ekspertov-es-os/">Аттестация экспертов ЕС ОС</a></li>
                     <li><a href="/attestatsiya-spetsialistov-nk-1-i-2-urovnej/">Аттестация специалистов  <br/> НК 1 и 2 уровней</a></li>
                     <li><a href="/energoaudit/">Энергоаудит</a></li>
-			<li><a href="/akkreditatsiya-eo-il-namts/">Аккредитация ЭО, ИЛ, НАМЦ</a></li>
+			<li style='height: 60px'><a href="/akkreditatsiya-eo-il-namts/">Аккредитация экспертных <br />организаций, испытательных <br />лабораторий, НАМЦ</a></li>
                 </ul>
             </nav>
 
@@ -223,7 +223,7 @@
 
         </div>
         <div class="footer__address">
-            <p>Москва, Головинское шоссе, д. 8. корп. 2А (2 этаж)</p>
+            <p>Москва, Кронштадтский бульвар 7A, офис 406</p>
 
             <p>Тел.: <span class="footer__address__phone">(495) 452-29-76, 452-53-03, 730-75-90</span></p>
 
@@ -237,5 +237,31 @@
 <!--         <div class="footer__counter"><img src="/static/img/footer_icon.jpg"/></div> -->
     </footer>
 </div>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+(function (d, w, c) {
+    (w[c] = w[c] || []).push(function() {
+        try {
+            w.yaCounter24655760 = new Ya.Metrika({id:24655760,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true});
+        } catch(e) { }
+    });
+
+    var n = d.getElementsByTagName("script")[0],
+        s = d.createElement("script"),
+        f = function () { n.parentNode.insertBefore(s, n); };
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+    if (w.opera == "[object Opera]") {
+        d.addEventListener("DOMContentLoaded", f, false);
+    } else { f(); }
+})(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="//mc.yandex.ru/watch/24655760" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
 </body>
 </html>
