@@ -1,1 +1,1 @@
-python manage.py dumpdata contacts feedback pages partners request review slideshow > dump___.json
+python manage.py dumpdata certificates contacts feedback pages partners request review slideshow > dump____.json
